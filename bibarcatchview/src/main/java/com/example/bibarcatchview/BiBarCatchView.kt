@@ -216,4 +216,13 @@ class BiBarCatchView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+
+        fun create(activity : Activity) : BiBarCatchView {
+            val view : BiBarCatchView = BiBarCatchView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
