@@ -191,4 +191,27 @@ class BiBarCatchView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : BiBarCatchView) {
+
+        private val animator : Animator = Animator(view)
+        private val lbbc : LineBiBarCatch = LineBiBarCatch(0)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            lbbc.draw(canvas, paint)
+            animator.animate {
+                lbbc.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            lbbc.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
