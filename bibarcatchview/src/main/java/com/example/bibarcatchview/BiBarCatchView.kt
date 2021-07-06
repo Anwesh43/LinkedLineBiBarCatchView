@@ -19,7 +19,7 @@ val colors : Array<Int> = arrayOf(
     Color.parseColor(it)
 }.toTypedArray()
 val parts : Int = 4
-val scGap : Float = 0.02f / parts
+val scGap : Float = 0.04f / parts
 val strokeFactor : Float = 90f
 val sizeFactor : Float = 3.6f
 val barHFactor : Float = 11.2f
@@ -49,7 +49,7 @@ fun Canvas.drawBiBarCatch(scale : Float, w : Float, h : Float, paint : Paint) {
     for (j in 0..1) {
         save()
         scale(1f - 2 * j, 1f - 2 * j)
-        translate(w / 2 * (1f - sc2), (uSize * 0.5f - barH) * sc3)
+        translate(w / 2 * (1f - sc2), (uSize * 0.5f - barH / 2) * sc3)
         drawRect(RectF(0f, -barH / 2, barW, barH / 2), paint)
         restore()
     }
